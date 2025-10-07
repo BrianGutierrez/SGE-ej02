@@ -1,0 +1,36 @@
+<ion-header>
+  <ion-toolbar class="ion-no-border">
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/inicio"></ion-back-button>
+    </ion-buttons>
+    <ion-title class="ion-text-capitalize ion-text-center">SHEET</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+
+  <!-- Chips de los personajes -->
+  <ion-grid>
+    <ion-row>
+      @for (personaje of personajes; track personaje.id) {
+        <ion-col class="ion-padding ion-text-center">
+          <ion-chip color="primary" (click)="cambiarImagenCentral(personaje.imagen)">
+            <ion-avatar>
+              <ion-img [src]="personaje.imagen"></ion-img>
+            </ion-avatar>
+            <ion-label>{{ personaje.nombre }}</ion-label>
+          </ion-chip>
+        </ion-col>
+      }
+    </ion-row>
+  </ion-grid>
+
+  <!-- Avatar central -->
+  <ion-grid class="ion-padding ion-text-center" style="display: flex; justify-content: center;">
+    <ion-avatar (click)="abrirActionSheet()" style="cursor: pointer;">
+      <ion-img [src]="imagenCentral"></ion-img>
+    </ion-avatar>
+  </ion-grid>
+
+</ion-content>
+
